@@ -12,10 +12,13 @@ public class CameraPreset : ScriptableObject
 
     [Header("Camera rotate camera target")]
     public bool cameraRotateCameraTarget = false;
-    
+
     [Header("Block Camera Pan/Tilt")]
     public bool blockCameraTilt = false;
     public bool blockCameraPan = false;
+
+    [Header("Camera offset")]
+    public Vector3 cameraOffset = new Vector3(0f, 1.8f, 0f);
 
     [Header("Camera distance")]
     public float cameraStartDistance = 5f;
