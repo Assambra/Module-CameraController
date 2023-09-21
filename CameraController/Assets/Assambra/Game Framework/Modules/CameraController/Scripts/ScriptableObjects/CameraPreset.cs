@@ -7,7 +7,6 @@ public class CameraPreset : ScriptableObject
     public bool Active = true;
 
     [Header("Automatic find")]
-    public bool autofindMainCamera = false;
     public bool autofindPlayer = false;
 
     [Header("Camera rotate camera target")]

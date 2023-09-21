@@ -13,7 +13,6 @@ public class CameraController : MonoBehaviour
 
 
     [Header("Automatic find")]
-    [SerializeField] private bool autoFindMainCamera = false;
     [SerializeField] private bool autoFindPlayer = false;
 
     [Header("Camera rotate camera target")]
@@ -55,25 +54,27 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        if (MainCamera == null && autoFindMainCamera)
+        if (MainCamera == null)
         {
-            if (GameObject.FindGameObjectWithTag("MainCamera"))
-                MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-            else
+            MainCamera = Camera.main;
+
+            if (MainCamera == null)
                 Debug.LogError("No Camera with Tag MainCamera found");
         }
 
-        fieldOfView = MainCamera.fieldOfView;
-        lastCameraFieldOfView = fieldOfView;
+        if (MainCamera != null)
+        {
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
+            MainCamera.transform.position = Vector3.zero;
+            MainCamera.transform.rotation = Quaternion.identity;
 
-        transform.position = Vector3.zero;
-        transform.rotation = Quaternion.identity;
-        MainCamera.transform.position = Vector3.zero;
-        MainCamera.transform.rotation = Quaternion.identity;
+            MainCamera.transform.parent = gameObject.transform;
+            fieldOfView = MainCamera.fieldOfView;
+            lastCameraFieldOfView = fieldOfView;
 
-        MainCamera.transform.parent = gameObject.transform;
-
-        cameraDistance = cameraStartDistance;
+            cameraDistance = cameraStartDistance;
+        }
     }
 
     void Start()
@@ -127,7 +128,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        LookAtCameraTarget();
+        if (Active)
+            LookAtCameraTarget();
     }
 
     private void LookAtCameraTarget()
@@ -258,7 +260,6 @@ public class CameraController : MonoBehaviour
 
         this.Active = camerapreset.Active;
 
-        this.autoFindMainCamera = camerapreset.autofindMainCamera;
         this.autoFindPlayer = camerapreset.autofindPlayer;
 
         this.cameraRotateCameraTarget = camerapreset.cameraRotateCameraTarget;
