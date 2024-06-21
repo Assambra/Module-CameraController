@@ -1,24 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControllerDemo : MonoBehaviour
+namespace Assambra.GameFramework.CameraController.Demo
 {
-    [SerializeField] private CameraController cameraController;
-    
-    void Start()
+    public class CameraControllerDemo : MonoBehaviour
     {
-        cameraController.ChangeCameraPreset("PreGameCamera");
-    }
+        [SerializeField] private CameraController cameraController;
 
-    void Update()
-    {
-        
-    }
+        void Start()
+        {
+            cameraController.ChangeCameraPreset("PreGameCamera");
+        }
 
-    public void OnButtonChangePreset()
-    {
-        cameraController.ChangeCameraPreset("GameCamera");
-        Debug.Log("Camera Preset changed to: GameCamera");
+        void Update()
+        {
+
+        }
+
+        public void OnButtonChangePreset()
+        {
+            cameraController.ChangeCameraPreset("GameCamera");
+            Debug.Log("Camera Preset changed to: GameCamera");
+        }
     }
 }
+

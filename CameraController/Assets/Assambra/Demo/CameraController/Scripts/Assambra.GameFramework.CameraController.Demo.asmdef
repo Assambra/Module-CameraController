@@ -1,0 +1,16 @@
+{
+    "name": "Assambra.GameFramework.CameraController.Demo",
+    "rootNamespace": "",
+    "references": [
+        "GUID:969f4570854ce9948b235f4032eb2d2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
